@@ -1,4 +1,4 @@
 public interface IDamageDealer
 {
-    void ApplyDamage(PlayerHealth playerHealth);
+    void ApplyDamage(Health playerHealth);
 }

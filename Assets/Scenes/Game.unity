@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 770648105}
   - component: {fileID: 770648104}
   - component: {fileID: 770648103}
+  - component: {fileID: 770648109}
   - component: {fileID: 770648108}
   m_Layer: 0
   m_Name: Player
@@ -1487,11 +1488,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 770648100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7600a529042a544b715618d28ca897, type: 3}
+  m_Script: {fileID: 11500000, guid: 5773f98f1962cf14398bd5171ebf5832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _healthBar: {fileID: 1716837063}
+--- !u!114 &770648109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770648100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc53f28eb13a0584fb3798879dd511bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 770648108}
 --- !u!1 &771639562
 GameObject:
   m_ObjectHideFlags: 0
@@ -12145,7 +12158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1448806145}
   - component: {fileID: 1448806144}
-  - component: {fileID: 1448806143}
+  - component: {fileID: 1448806146}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -12153,19 +12166,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1448806143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448806142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b14f5450b02c2614eb60230f109f7ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _continuousDamageRate: 7.3
 --- !u!61 &1448806144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12226,6 +12226,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448806146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448806142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee93342172fe9146959a795075d1b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fixedDamage: 21.9
 --- !u!1 &1488064137
 GameObject:
   m_ObjectHideFlags: 0
@@ -12445,6 +12458,7 @@ GameObject:
   - component: {fileID: 1716837062}
   - component: {fileID: 1716837064}
   - component: {fileID: 1716837063}
+  - component: {fileID: 1716837065}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -12509,6 +12523,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716837061}
   m_CullTransparentMesh: 1
+--- !u!114 &1716837065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716837061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123b6a5758eb7cf4282cad3e32d8354c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 1716837063}
+  _health: {fileID: 770648108}
 --- !u!1 &1722061427
 GameObject:
   m_ObjectHideFlags: 0

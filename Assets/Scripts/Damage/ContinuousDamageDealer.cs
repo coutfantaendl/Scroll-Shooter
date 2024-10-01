@@ -7,43 +7,43 @@ public class ContinuousDamageDealer : MonoBehaviour, IDamageDealer
 
     private bool _isPlayerIntrigger = false;
 
-    private PlayerHealth _playerHealth;
+    private Health _health;
     private PlayerController _playerController;
 
-    public void ApplyDamage(PlayerHealth playerHealth)
+    public void ApplyDamage(Health health)
     {
-        if(playerHealth != null)
-        {
-            _playerHealth.TakeDamage(_continuousDamageRate * Time.deltaTime);
-        }
+        _health.TakeDamage(_continuousDamageRate * Time.deltaTime);
     }
 
     private void Update()
     {
-        if(_isPlayerIntrigger)
-        {
-            ApplyDamage(_playerHealth);
-        }
+        if (!_isPlayerIntrigger)
+            return;
+        ApplyDamage(_health);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
-            _playerHealth = collision.GetComponent<PlayerHealth>();
-            _playerController = collision.GetComponent<PlayerController>();
+        if (!collision.CompareTag("Player"))
+            return;
+        if (!collision.TryGetComponent(out Health health))
+            return;
 
-            _isPlayerIntrigger = true;
-            _playerController.Speed = 1f;
-        }
+        _health = health;
+        _playerController = collision.GetComponent<PlayerController>();
+
+        _isPlayerIntrigger = true;
+        _playerController.Speed = 1f;
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
-            _isPlayerIntrigger = false;
-            _playerController.Speed = 2f;
-        }
+        if (!collision.CompareTag("Player"))
+            return;
+
+        _isPlayerIntrigger = false;
+        _playerController.Speed = 2f;
+        _health = null;
     }
 }

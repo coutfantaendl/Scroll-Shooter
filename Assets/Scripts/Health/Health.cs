@@ -2,19 +2,16 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [Header("Health Settings")]
     [SerializeField] private float _maxHealth;
-
-    [Header("UI Settings")]
-    [SerializeField] private Image _healthBar;
-
 
     private float _currentHealth;
     private PlayerController _playerController;
 
     public event Action<float> HealthChanged;
+    public event Action Die;
 
     private void Awake()
     {
@@ -31,26 +28,11 @@ public class PlayerHealth : MonoBehaviour
     {
         _currentHealth -= damage;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
-        UpdateHealthBar();
 
-        if(_currentHealth <= 0)
+        if(_currentHealth <= 0 )
         {
-            Die();
+            Die?.Invoke();
         }
-    }
-    /// <summary>
-    /// ///////////////////// перенести ui в отдельный класс
-    /// </summary>
-    private void UpdateHealthBar()
-    {
-        if(_healthBar != null )
-        {
-            _healthBar.fillAmount = _currentHealth / _maxHealth;
-        }
-    }
-
-    private void Die()
-    {
-        Debug.Log("Player Die");
-    }
+        HealthChanged?.Invoke(_currentHealth / _maxHealth);
+    }     
 }

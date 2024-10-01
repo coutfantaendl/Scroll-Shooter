@@ -4,9 +4,14 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image _healthBar;
+    [SerializeField] private Health _health;
 
-    private void UpdateHealthBar(float currentHealth, float maxHeatlth)
+    private void Awake()
     {
-        _healthBar.fillAmount = currentHealth / maxHeatlth;
+        _health.HealthChanged += UpdateHealthBar;
+    }
+    private void UpdateHealthBar(float health)
+    {
+        _healthBar.fillAmount = health;
     }
 }
