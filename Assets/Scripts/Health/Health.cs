@@ -8,14 +8,12 @@ public class Health : MonoBehaviour
     [SerializeField] private float _maxHealth;
 
     private float _currentHealth;
-    private PlayerController _playerController;
 
     public event Action<float> HealthChanged;
     public event Action Die;
 
     private void Awake()
     {
-        _playerController = GetComponent<PlayerController>(); 
         InitializeHealth();
     }
 
