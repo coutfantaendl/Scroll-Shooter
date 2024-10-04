@@ -1,3 +1,4 @@
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,13 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private float _groundCheckRadius;
 
-    [Header("Animation")]
-    [SerializeField] private Animator animator;
+    //[Header("Animation")]
+    //[SerializeField] private Animator animator;
 
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
     private PlayerInputActions _playerInputActions;
     private bool _isGrounded;
+
+    private PlayerView _playerView;
 
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
 
@@ -28,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _playerView = GetComponent<PlayerView>();
         _playerInputActions = new PlayerInputActions();
     }
 
@@ -49,8 +53,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        bool isMoving = Mathf.Abs(_moveInput.x) > 0.1;
-        animator.SetBool(IsRunning, isMoving);
+        _playerView.UpdateMovementAnimation(_moveInput.x);
+        _playerView.UpdateJumpingAnimation(_isGrounded);
     }
 
     private void OnEnable()
