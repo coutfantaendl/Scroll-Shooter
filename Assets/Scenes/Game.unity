@@ -3169,6 +3169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 770648108}
+  _playerView: {fileID: 770648110}
 --- !u!114 &770648110
 MonoBehaviour:
   m_ObjectHideFlags: 0

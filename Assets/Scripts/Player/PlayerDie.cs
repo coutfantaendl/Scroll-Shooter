@@ -5,6 +5,7 @@ namespace Assets.Scripts.Player
     public class PlayerDie : MonoBehaviour
     {
         [SerializeField] private Health _health;
+        [SerializeField] private PlayerView _playerView;
 
         private void Awake()
         {
@@ -13,7 +14,7 @@ namespace Assets.Scripts.Player
 
         private void OnDie()
         {
-            Debug.Log("PlayerDie");
+            _playerView.PlayDeadAnimation();
         }
     }
 }

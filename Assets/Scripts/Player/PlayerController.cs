@@ -14,9 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private float _groundCheckRadius;
 
-    //[Header("Animation")]
-    //[SerializeField] private Animator animator;
-
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
     private PlayerInputActions _playerInputActions;
