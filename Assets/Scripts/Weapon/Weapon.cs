@@ -1,19 +1,16 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, IShootable
 {
-    [SerializeField] private float _shootRange;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _shootPoint;
 
-    [SerializeField] private LayerMask _hitLayers;
-    [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _shootForce;
 
     public void Shoot(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.Raycast(_firePoint.position, direction, _shootRange, _hitLayers);
-    }
-
-    public void SetFirePointPosition(Vector2 direction)
-    {
-        _firePoint.localPosition = new Vector3(Mathf.Abs(_firePoint.localPosition.x) * direction.x, _firePoint.localPosition.y, 0f);
+        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(direction * _shootForce, ForceMode2D.Impulse);
     }
 }
