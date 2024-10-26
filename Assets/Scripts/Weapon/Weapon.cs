@@ -1,16 +1,26 @@
+using Assets.Scripts.Weapon;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour, IShootable
 {
+    [Header("Weapon Settings")]
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private Transform _shootPoint;
+    [SerializeField] private Transform _firePoint;
+    //[SerializeField] private int _maxAmmo;
+    [SerializeField] private float _rayDistance;
+    [SerializeField] private LayerMask _hitLayer;
 
-    [SerializeField] private float _shootForce;
+    private PhysicsRay _physicsRay;
+
+    private void Awake()
+    {
+        _physicsRay = new PhysicsRay(_rayDistance, _hitLayer);
+    }
 
     public void Shoot(Vector2 direction)
     {
-        GameObject bullet = Instantiate(_bulletPrefab, _shootPoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(direction * _shootForce, ForceMode2D.Impulse);
+        RaycastHit2D hit = _physicsRay.CastRay(_firePoint.position,direction);
+        GameObject bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().Initialize(direction);
     }
 }

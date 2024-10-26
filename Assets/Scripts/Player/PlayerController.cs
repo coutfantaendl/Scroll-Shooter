@@ -17,11 +17,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveInput;
     private PlayerInputActions _playerInputActions;
+
     private bool _isGrounded;
+    private bool _isFacingRight = true;
 
     private PlayerView _playerView;
-
-    private static readonly int IsRunning = Animator.StringToHash("isRunning");
+    private Weapon _weapon;
 
     public float Speed { get => _speed; set => _speed = value; }
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _playerView = GetComponent<PlayerView>();
         _playerInputActions = new PlayerInputActions();
+        _weapon = GetComponent<Weapon>();
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        FlipCharacter();
     }
 
     private void CheckGroundStatus()
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
         _playerInputActions.Player.Move.performed += OnMovePerforned;
         _playerInputActions.Player.Move.canceled += OnMoveCanceled;
         _playerInputActions.Player.Jump.performed += OnJumpPerformed;
+        _playerInputActions.Player.Fire.performed += OnShootPerformed;
 
         _playerInputActions.Player.Enable();
     }
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
         _playerInputActions.Player.Move.performed -= OnMovePerforned;
         _playerInputActions.Player.Move.canceled -= OnMoveCanceled;
         _playerInputActions.Player.Jump.performed -= OnJumpPerformed;
+        _playerInputActions.Player.Fire.performed -= OnShootPerformed;
 
         _playerInputActions.Player.Disable();
     }
@@ -75,6 +80,26 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         _rb.velocity = new Vector2(_moveInput.x * _speed, _rb.velocity.y);
+    }
+
+    private void FlipCharacter()
+    {
+        if (_moveInput.x > 0 && !_isFacingRight)
+        {
+            Flip();
+        }
+        else if (_moveInput.x < 0 && _isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        _isFacingRight = !_isFacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
@@ -94,6 +119,12 @@ public class PlayerController : MonoBehaviour
     {
         _moveInput = Vector2.zero;
     }
+
+    private void OnShootPerformed(InputAction.CallbackContext context)
+    {
+        Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
+        _weapon.Shoot(direction);
+    }    
 
     private void OnDrawGizmosSelected()
     {

@@ -14,7 +14,7 @@ public class FixedDamageDealer : MonoBehaviour, IDamageDealer
     {
         if (!collision.CompareTag("Player"))
             return;
-        if(!collision.TryGetComponent(out Health health))
+        if (!collision.TryGetComponent(out Health health))
             return;
         ApplyDamage(health);
     }
