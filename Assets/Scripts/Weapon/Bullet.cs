@@ -8,19 +8,18 @@ namespace Assets.Scripts.Weapon
         [SerializeField] private float _speed;
 
         private Vector2 _direction;
+        private Rigidbody2D _rb;
 
         public void Initialize(Vector2 direction)
         {
             _direction = direction.normalized;
-        }
-
-        private void Update()
-        {
-            transform.Translate(_direction * _speed * Time.deltaTime);
+            _rb = GetComponent<Rigidbody2D>();
+            _rb.AddForce(direction * _speed, ForceMode2D.Impulse);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            ;
             if(collision.TryGetComponent(out Health health))
             {
                 health.TakeDamage(_damage);
