@@ -2428,6 +2428,7 @@ GameObject:
   - component: {fileID: 675713640}
   - component: {fileID: 675713644}
   - component: {fileID: 675713645}
+  - component: {fileID: 675713646}
   m_Layer: 5
   m_Name: Interface
   m_TagString: Untagged
@@ -2549,6 +2550,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 2044705199}
+--- !u!114 &675713646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675713639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39b4b22e7e0577499834e472bfa2fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ammoText: {fileID: 470878164}
 --- !u!1 &709133519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,12 +3292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf47e8f3dc8bc946a50ad72949826d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 5205313472881941533, guid: 4dacf7e2b1ed33e43a7efb364e1b7bae, type: 3}
+  _bulletPrefab: {fileID: -3249372469070718142, guid: 4dacf7e2b1ed33e43a7efb364e1b7bae, type: 3}
   _firePoint: {fileID: 1607183205}
-  _rayDistance: 10
-  _hitLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  _maxAmmo: 18
 --- !u!1 &771639562
 GameObject:
   m_ObjectHideFlags: 0
