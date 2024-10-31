@@ -1,3 +1,5 @@
+using System;
+
 public class Ammo : IAmmo
 {
     private int _currentAmmo;
@@ -16,7 +18,12 @@ public class Ammo : IAmmo
 
     public void UseAmmo()
     {
-        if(_currentAmmo > 0)
+        if (_currentAmmo > 0)
             _currentAmmo--;
+    }
+
+    public void AddAmmo(int amount, int maxAmmo)
+    {
+        _currentAmmo = Math.Min(_currentAmmo + amount, maxAmmo);
     }
 }

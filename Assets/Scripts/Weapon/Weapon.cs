@@ -35,6 +35,12 @@ public class Weapon : MonoBehaviour, IShootable
         }
     }
 
+    public void AddAmmo(int amount)
+    {
+        _ammo.AddAmmo(amount, _maxAmmo);
+        NotifyAmmoChanged();
+    }
+
     private void NotifyAmmoChanged()
     {
         OnAmmoChanged?.Invoke(_ammo.CurrentAmmo);
