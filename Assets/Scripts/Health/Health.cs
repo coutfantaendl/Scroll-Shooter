@@ -31,5 +31,12 @@ public class Health : MonoBehaviour, IDamageable
             Die?.Invoke();
         }
         HealthChanged?.Invoke(_currentHealth / _maxHealth);
-    }     
+    } 
+    
+    public void Heal(float healAmount)
+    {
+        _currentHealth += healAmount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+        HealthChanged?.Invoke(_currentHealth / _maxHealth);
+    }
 }
