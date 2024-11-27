@@ -6,7 +6,7 @@ public class Health : MonoBehaviour, IDamageable
     [Header("Health Settings")]
     [SerializeField] private float _maxHealth;
 
-    [SerializeField] private float _currentHealth;
+    private float _currentHealth;
 
     public event Action<float> HealthChanged;
     public event Action Die;
