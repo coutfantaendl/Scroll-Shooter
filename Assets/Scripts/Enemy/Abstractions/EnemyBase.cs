@@ -11,18 +11,17 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected Transform player;
     protected Rigidbody2D rb;
-    protected Animator animator;
     protected Vector2 direction;
     protected bool isPlayerDetected;
     protected bool isIdle;
 
-    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
-    private static readonly int IsIdle = Animator.StringToHash("IsIdle");
+    private EnemyView _view;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        _view = GetComponent<EnemyView>();
+
         direction = Vector2.right;
     }
 
@@ -59,14 +58,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Move()
     {
-        animator.SetBool(IsWalking, true);
+        _view.EnemyWalking(true);
         rb.velocity = direction * speed;
     }
 
     public void StopMoving()
     {
         rb.velocity = Vector2.zero;
-        animator.SetBool(IsWalking, false);
+        _view.EnemyWalking(false);
     }
 
     public void ChangeDirection()
@@ -80,14 +79,14 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isIdle = true;
         StopMoving();
-        animator.SetBool(IsIdle, true);
+        _view.EnemyIdle(true);
         Invoke(nameof(ExitIdleState), idleTime);
     }
 
     private void ExitIdleState()
     {
         isIdle = false;
-        animator.SetBool(IsIdle, false);
+        _view.EnemyIdle(false);
     }
 
     protected virtual void OnDrawGizmosSelected()
