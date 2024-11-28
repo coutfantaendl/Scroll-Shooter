@@ -6,7 +6,6 @@ public class TriggerEnemy : MonoBehaviour
     {
         if (collision.TryGetComponent(out EnemyBase enemy))
         {
-            print("AAAAAAAAAAAAA");
             enemy.EnterIdleState();
             enemy.ChangeDirection();
         }

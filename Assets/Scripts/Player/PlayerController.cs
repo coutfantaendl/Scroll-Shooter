@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
         _weapon.Shoot(direction);
-    }    
+    }
 
     private void OnDrawGizmosSelected()
     {

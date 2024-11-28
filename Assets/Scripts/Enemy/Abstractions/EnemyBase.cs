@@ -15,12 +15,12 @@ public abstract class EnemyBase : MonoBehaviour
     protected Vector2 direction;
     protected bool isPlayerDetected;
     protected bool isIdle;
-    protected EnemyView _view;
+    protected EnemyView view;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        _view = GetComponent<EnemyView>();
+        view = GetComponent<EnemyView>();
 
         direction = Vector2.right;
     }
@@ -43,7 +43,13 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected void DetectPlayer()
     {
-        Collider2D detectedPlayer = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
+        int mask = playerLayer;
+
+        Collider2D detectedPlayer = Physics2D.OverlapCircle
+            (transform.position, 
+            detectionRadius, 
+            mask);
+
         isPlayerDetected = detectedPlayer != null;
 
         if (isPlayerDetected)
@@ -58,14 +64,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Move()
     {
-        _view.EnemyWalking(true);
+        view.EnemyWalking(true);
         rb.velocity = direction * speed;
     }
 
     public void StopMoving()
     {
         rb.velocity = Vector2.zero;
-        _view.EnemyWalking(false);
+        view.EnemyWalking(false);
     }
 
     public void ChangeDirection()
@@ -79,14 +85,14 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isIdle = true;
         StopMoving();
-        _view.EnemyIdle(isIdle);
+        view.EnemyIdle(isIdle);
         Invoke(nameof(ExitIdleState), idleTime);
     }
 
     private void ExitIdleState()
     {
         isIdle = false;
-        _view.EnemyIdle(isIdle);
+        view.EnemyIdle(isIdle);
     }
 
     protected virtual void OnDrawGizmosSelected()

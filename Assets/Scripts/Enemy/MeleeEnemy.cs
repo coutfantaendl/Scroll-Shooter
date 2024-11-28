@@ -4,17 +4,21 @@ public class MeleeEnemy : EnemyBase, IAttack
 {
     [SerializeField] private float _attackRadius;
     [SerializeField] private int _damage;
-    
+
     protected override void EnterAttackState()
     {
-        _view.EnemyAttack();
-       
-        StopMoving();       
+        view.EnemyAttack();
+
+        StopMoving();
     }
-   
+
     public void Attack()
     {
-        Collider2D playerHit = Physics2D.OverlapCircle(transform.position, _attackRadius, playerLayer);
+        Collider2D playerHit = Physics2D.OverlapCircle
+            (transform.position,
+            _attackRadius,
+            playerLayer);
+
         if (playerHit == null)
             return;
 
