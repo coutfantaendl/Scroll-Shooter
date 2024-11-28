@@ -6,6 +6,7 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("General Settings")]
     [SerializeField] protected float speed;
     [SerializeField] protected float idleTime;
+    [Space]
     [SerializeField] protected LayerMask playerLayer;
     [SerializeField] protected float detectionRadius;
 
@@ -14,8 +15,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected Vector2 direction;
     protected bool isPlayerDetected;
     protected bool isIdle;
-
-    private EnemyView _view;
+    protected EnemyView _view;
 
     protected virtual void Awake()
     {
@@ -79,14 +79,14 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isIdle = true;
         StopMoving();
-        _view.EnemyIdle(true);
+        _view.EnemyIdle(isIdle);
         Invoke(nameof(ExitIdleState), idleTime);
     }
 
     private void ExitIdleState()
     {
         isIdle = false;
-        _view.EnemyIdle(false);
+        _view.EnemyIdle(isIdle);
     }
 
     protected virtual void OnDrawGizmosSelected()

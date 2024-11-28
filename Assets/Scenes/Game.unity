@@ -15716,9 +15716,12 @@ GameObject:
   - component: {fileID: 1374914015}
   - component: {fileID: 1374914017}
   - component: {fileID: 1374914016}
+  - component: {fileID: 1374914021}
+  - component: {fileID: 1374914023}
+  - component: {fileID: 1374914022}
   - component: {fileID: 1374914018}
-  - component: {fileID: 1374914020}
   - component: {fileID: 1374914019}
+  - component: {fileID: 1374914020}
   m_Layer: 0
   m_Name: Minotaur
   m_TagString: Enemy
@@ -15826,12 +15829,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f1003d4c00de946bfc0834acaa8581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  speed: 0.25
   idleTime: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
   detectionRadius: 0.5
+  _attackRadius: 0.5
+  _damage: 20
 --- !u!70 &1374914019
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15879,7 +15884,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -15894,6 +15899,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1374914021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374914014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1fd71aae99e90e40b8db864f7f8f37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1374914016}
+--- !u!114 &1374914022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374914014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5773f98f1962cf14398bd5171ebf5832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 250
+--- !u!114 &1374914023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374914014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4594ebcd6fbc7a44591c63b51c7ec3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 1374914022}
+  _view: {fileID: 1374914021}
 --- !u!1 &1420727699
 GameObject:
   m_ObjectHideFlags: 0
