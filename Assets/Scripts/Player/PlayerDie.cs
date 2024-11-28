@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Player
 {
@@ -15,6 +16,11 @@ namespace Assets.Scripts.Player
         private void OnDie()
         {
             _playerView.PlayDeadAnimation();
+        }
+
+        public void SceneLose(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }

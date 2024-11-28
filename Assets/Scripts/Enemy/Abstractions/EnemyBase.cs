@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public abstract class EnemyBase : MonoBehaviour
 {
@@ -43,12 +42,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected void DetectPlayer()
     {
-        int mask = playerLayer;
-
         Collider2D detectedPlayer = Physics2D.OverlapCircle
             (transform.position, 
-            detectionRadius, 
-            mask);
+            detectionRadius,
+            playerLayer);
 
         isPlayerDetected = detectedPlayer != null;
 
