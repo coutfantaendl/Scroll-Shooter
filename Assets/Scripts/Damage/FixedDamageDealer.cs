@@ -3,7 +3,7 @@ using UnityEngine;
 public class FixedDamageDealer : MonoBehaviour, IDamageDealer
 {
     [Header("Damage Settings")]
-    [SerializeField, Range(1, 35)] private float _fixedDamage;
+    [SerializeField, Range(1, 100)] private float _fixedDamage;
 
     public void ApplyDamage(Health health)
     {
