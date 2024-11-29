@@ -17,7 +17,6 @@ namespace Assets.Scripts.Player
         private void OnDie()
         {
             _playerView.PlayDeadAnimation();
-            _scoreDataConfig.ResetScore();
         }
 
         public void SceneLose(int sceneIndex)

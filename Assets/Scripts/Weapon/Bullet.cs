@@ -19,10 +19,8 @@ namespace Assets.Scripts.Weapon
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            print(collision.gameObject.name);
             if(collision.TryGetComponent(out Health health))
             {
-                print(collision.gameObject.name);
                 health.TakeDamage(_damage);
             }
             Destroy(gameObject);
