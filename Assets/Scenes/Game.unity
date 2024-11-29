@@ -3759,6 +3759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 770648108}
   _playerView: {fileID: 770648110}
+  _scoreDataConfig: {fileID: 11400000, guid: 2bd0a3c386af64144b59896991e5ff28, type: 2}
 --- !u!114 &770648110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3787,6 +3788,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: -3249372469070718142, guid: 4dacf7e2b1ed33e43a7efb364e1b7bae, type: 3}
   _firePoint: {fileID: 1607183205}
   _maxAmmo: 20
+  _fireCooldown: 0.5
 --- !u!1 &771639562
 GameObject:
   m_ObjectHideFlags: 0
@@ -16201,6 +16203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 1374914022}
   _view: {fileID: 1374914021}
+  _scoreDataConfig: {fileID: 11400000, guid: 2bd0a3c386af64144b59896991e5ff28, type: 2}
+  _scoreReward: 15
 --- !u!1 &1420727699
 GameObject:
   m_ObjectHideFlags: 0
@@ -17409,6 +17413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 1647720050}
   _view: {fileID: 1647720048}
+  _scoreDataConfig: {fileID: 11400000, guid: 2bd0a3c386af64144b59896991e5ff28, type: 2}
+  _scoreReward: 20
 --- !u!114 &1647720050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19134,6 +19140,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044705199}
   m_CullTransparentMesh: 1
+--- !u!1 &2065154849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065154851}
+  - component: {fileID: 2065154850}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2065154850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065154849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dce8f3e0eb4f647ab7c9c95b444497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 61251221}
+  _scoreDataConfig: {fileID: 11400000, guid: 2bd0a3c386af64144b59896991e5ff28, type: 2}
+--- !u!4 &2065154851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065154849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 576.9029, y: 365.6454, z: -0.021064458}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143455441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143455443}
+  - component: {fileID: 2143455442}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2143455442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143455441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b3a60cdb72aac4ea2f273bd43f6866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volumeSettingsConfig: {fileID: 11400000, guid: 3ccae7ce6c2b71d4fadb4f562211eded, type: 2}
+  _soundSources: []
+  _musicSources:
+  - {fileID: 745523853}
+--- !u!4 &2143455443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143455441}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 672.16394, y: 357.7101, z: 3.168595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -19154,3 +19254,5 @@ SceneRoots:
   - {fileID: 632690684}
   - {fileID: 1913300073}
   - {fileID: 2008998287}
+  - {fileID: 2143455443}
+  - {fileID: 2065154851}

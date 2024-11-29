@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: VolumeSettingsConfig
   m_EditorClassIdentifier: 
   soundVolume: 0
-  musicVolume: 0
+  musicVolume: 0.17580351

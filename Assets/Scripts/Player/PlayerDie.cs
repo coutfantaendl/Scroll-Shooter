@@ -7,6 +7,7 @@ namespace Assets.Scripts.Player
     {
         [SerializeField] private Health _health;
         [SerializeField] private PlayerView _playerView;
+        [SerializeField] private ScoreDataConfig _scoreDataConfig;
 
         private void Awake()
         {
@@ -16,6 +17,7 @@ namespace Assets.Scripts.Player
         private void OnDie()
         {
             _playerView.PlayDeadAnimation();
+            _scoreDataConfig.ResetScore();
         }
 
         public void SceneLose(int sceneIndex)

@@ -8,8 +8,10 @@ public class Weapon : MonoBehaviour, IShootable
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private int _maxAmmo;
+    [SerializeField] private float _fireCooldown;
 
     private IAmmo _ammo;
+    private float _lastFireTime;
 
     public event Action<int> OnAmmoChanged;
 
@@ -21,6 +23,9 @@ public class Weapon : MonoBehaviour, IShootable
 
     public void Shoot(Vector2 direction)
     {
+        if(Time.time < _lastFireTime + _fireCooldown)
+            return;
+
         if (_ammo.HasAmmo())
         {
             var bullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
@@ -28,6 +33,8 @@ public class Weapon : MonoBehaviour, IShootable
 
             _ammo.UseAmmo();
             NotifyAmmoChanged();
+
+            _lastFireTime = Time.time;
         }
         else
         {

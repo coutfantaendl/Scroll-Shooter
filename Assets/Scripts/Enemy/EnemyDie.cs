@@ -4,6 +4,8 @@ public class EnemyDie : MonoBehaviour
 {
     [SerializeField] private Health _health;
     [SerializeField] private EnemyView _view;
+    [SerializeField] private ScoreDataConfig _scoreDataConfig;
+    [SerializeField] private int _scoreReward;
 
     private void Awake()
     {
@@ -13,6 +15,7 @@ public class EnemyDie : MonoBehaviour
     private void OnDie()
     {
         _view.EnemyDead();
+        _scoreDataConfig.AddScore(_scoreReward);
     }
 
     private void DestroyEnemy()
